@@ -25,7 +25,7 @@ CREATE TABLE `about_us` (
   `name_about_us` varchar(50) NOT NULL,
   `description_about_us` text NOT NULL,
   PRIMARY KEY (`id_about_us`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 /*Data for the table `about_us` */
 
@@ -55,17 +55,15 @@ DROP TABLE IF EXISTS `gallery`;
 
 CREATE TABLE `gallery` (
   `id_gallery` int(5) NOT NULL AUTO_INCREMENT,
-  `id_album` int(5) NOT NULL,
-  `jdl_gallery` varchar(100) COLLATE latin1_general_ci NOT NULL,
-  `gallery_seo` varchar(100) COLLATE latin1_general_ci NOT NULL,
-  `keterangan` text COLLATE latin1_general_ci NOT NULL,
-  `gbr_gallery` varchar(100) COLLATE latin1_general_ci NOT NULL,
+  `name_gallery` varchar(200) COLLATE latin1_general_ci DEFAULT NULL,
+  `description_gallery` text COLLATE latin1_general_ci,
+  `path_gallery` varchar(250) COLLATE latin1_general_ci DEFAULT NULL,
   PRIMARY KEY (`id_gallery`)
-) ENGINE=MyISAM AUTO_INCREMENT=57 DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=58 DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
 
 /*Data for the table `gallery` */
 
-insert  into `gallery`(`id_gallery`,`id_album`,`jdl_gallery`,`gallery_seo`,`keterangan`,`gbr_gallery`) values (3,12,'Duduk di Sofa','duduk-di-sofa','Sekeluarga sedang duduk di sofa.','27587family sofa.jpg'),(4,12,'Didepan Rumah','didepan-rumah','Sekeluarga sedang berada di ladang.','258819family field.jpg'),(5,12,'Keluarga Bahagia','keluarga-bahagia','Si anak memperlihatkan lukisan.','697448family.jpg'),(7,19,'Lebah','lebah','Lebah besar terbang.','322906lebah.jpg'),(8,17,'Bangunan Jepang','bangunan-jepang','Bangunan khas jepang','370422arche037.jpg'),(9,17,'Candi Merang','candi-merang','Bangunan candi khas kerajaan','346527arche014.jpg'),(10,18,'Cukur Janggut','cukur-janggut','Bayi unik sedang cukur rambut','892395macho4.jpg'),(11,18,'Push Up','push-up','Bayi unik sedang melakukan push-up','991546macho1.jpg'),(12,19,'Kuda Nyengir','kuda-nyengir','Gini nih kalau kuda lagi nyengir.','658447kuda.jpg'),(13,21,'Super Mario Bross','super-mario-bross','Game klasik 3D Mario Bross.','601318mario bros.jpg'),(32,21,'Naruto','naruto','Kartun ninja jepang Naruto','45440naruto.jpg'),(15,21,'Superman','superman','Superman kecil mau beraksi','689147superman.jpg'),(27,21,'Sonic','sonic','Sonic and Friend','152618sonic.jpg'),(31,21,'Kungfu Panda','kungfu-panda','Jack Black','550598panda2.jpg'),(33,21,'Maskot Euro 2008','maskot-euro-2008','Trix dan Flix di Euro 2008','816528mascot.jpg'),(14,21,'Harry Potter','harry-potter','Game Harry Potter','735687potter.jpg'),(42,21,'Avatar','avatar','Eng si Gundul Avatar','874877avatar.jpg'),(16,21,'Shrek','shrek','Film 3D Shrek 2','527801shrek06_800.jpg'),(44,21,'Kenshin','kenshin','Kenshin Himura','494110himura.jpg'),(45,21,'Sun Goku','sun-goku','Goku Cilik','266845goku.JPG'),(46,21,'Virtual Girl','virtual-girl','Gadis Cantik 3D','837921Girl.jpg');
+insert  into `gallery`(`id_gallery`,`name_gallery`,`description_gallery`,`path_gallery`) values (3,'12','Duduk di Sofa','duduk-di-sofa'),(4,'12','Didepan Rumah','didepan-rumah'),(5,'12','Keluarga Bahagia','keluarga-bahagia'),(7,'19','Lebah','lebah'),(8,'17','Bangunan Jepang','bangunan-jepang'),(9,'17','Candi Merang','candi-merang'),(10,'18','Cukur Janggut','cukur-janggut'),(11,'18','Push Up','push-up'),(12,'19','Kuda Nyengir','kuda-nyengir'),(13,'21','Super Mario Bross','super-mario-bross'),(32,'21','Naruto','naruto'),(15,'21','Superman','superman'),(27,'21','Sonic','sonic'),(31,'21','Kungfu Panda','kungfu-panda'),(33,'21','Maskot Euro 2008','maskot-euro-2008'),(14,'21','Harry Potter','harry-potter'),(42,'21','Avatar','avatar'),(16,'21','Shrek','shrek'),(44,'21','Kenshin','kenshin'),(45,'21','Sun Goku','sun-goku'),(46,'21','Virtual Girl','virtual-girl');
 
 /*Table structure for table `jobs` */
 
@@ -102,7 +100,7 @@ CREATE TABLE `service_flow_candidate` (
   `description_service_flow_candidate` text NOT NULL,
   `icon_flow_candidate` varchar(50) NOT NULL,
   PRIMARY KEY (`id_service_flow_candidate`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 
 /*Data for the table `service_flow_candidate` */
 
@@ -118,7 +116,7 @@ CREATE TABLE `service_flow_company` (
   `description_flow_company` text NOT NULL,
   `icon_flow_company` varchar(50) NOT NULL,
   PRIMARY KEY (`id_service_flow_company`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
 
 /*Data for the table `service_flow_company` */
 
@@ -139,35 +137,6 @@ CREATE TABLE `templates` (
 /*Data for the table `templates` */
 
 insert  into `templates`(`id_templates`,`title_templates`,`folder_templates`,`status_templates`) values (1,'clipone','admin_lte','N'),(2,'clipfront','admin_lte','Y');
-
-/*Table structure for table `users` */
-
-DROP TABLE IF EXISTS `users`;
-
-CREATE TABLE `users` (
-  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-  `ip_address` varchar(45) NOT NULL,
-  `username` varchar(100) DEFAULT NULL,
-  `password` varchar(255) NOT NULL,
-  `salt` varchar(255) DEFAULT NULL,
-  `email` varchar(254) NOT NULL,
-  `activation_code` varchar(40) DEFAULT NULL,
-  `forgotten_password_code` varchar(40) DEFAULT NULL,
-  `forgotten_password_time` int(11) unsigned DEFAULT NULL,
-  `remember_code` varchar(40) DEFAULT NULL,
-  `created_on` int(11) unsigned NOT NULL,
-  `last_login` int(11) unsigned DEFAULT NULL,
-  `active` tinyint(1) unsigned DEFAULT NULL,
-  `first_name` varchar(50) DEFAULT NULL,
-  `last_name` varchar(50) DEFAULT NULL,
-  `company` varchar(100) DEFAULT NULL,
-  `phone` varchar(20) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
-
-/*Data for the table `users` */
-
-insert  into `users`(`id`,`ip_address`,`username`,`password`,`salt`,`email`,`activation_code`,`forgotten_password_code`,`forgotten_password_time`,`remember_code`,`created_on`,`last_login`,`active`,`first_name`,`last_name`,`company`,`phone`) values (1,'127.0.0.1','administrator','$2a$07$SeBknntpZror9uyftVopmu61qg0ms8Qv1yV6FG.kQOSM.9QhmTo36','','admin@admin.com','',NULL,NULL,NULL,1268889823,1528028626,1,'Admin','istrator','ADMIN','0'),(2,'::1','eeeeeeeeeeeee@dd.mm','$2y$08$1sD16zJeZ7QlMreE6cnHo.oxpsBhXPiABexb7sbI8.siTONwlWJWa',NULL,'eeeeeeeeeeeee@dd.mm',NULL,NULL,NULL,NULL,1528028660,NULL,1,'eeeeeeeeee','eeeeeeeeeeee','eeeeeeeeeee','eeeeeeeeeeee');
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;

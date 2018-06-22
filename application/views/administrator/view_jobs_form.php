@@ -80,7 +80,7 @@
 					</div>
 					<input type="hidden" name="id_jobs" value="<?php echo $id_jobs; ?>" />
 					<button type="submit" class="btn btn-primary"><?php echo $button ?></button>
-					<a href="<?php echo site_url('jobs') ?>" class="btn btn-default">Cancel</a>
+					<a href="<?php echo site_url('administrator/jobs') ?>" class="btn btn-default">Cancel</a>
 				</div>
 			</form>
 		</div>

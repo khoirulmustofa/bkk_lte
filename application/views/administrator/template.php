@@ -13,10 +13,10 @@
 	href="<?php echo base_url('template/admin_lte/'); ?>bootstrap/css/bootstrap.min.css">
 <!-- Font Awesome -->
 <link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
+	href="<?php echo base_url('template/admin_lte/'); ?>plugins/font-awesome-4.4.0/css/font-awesome.min.css">
 <!-- Ionicons -->
 <link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+	href="<?php echo base_url('template/admin_lte/'); ?>plugins/ionicons-2.0.1/css/ionicons.min.css">
 <!-- Theme style -->
 <link rel="stylesheet"
 	href="<?php echo base_url('template/admin_lte/'); ?>dist/css/AdminLTE.min.css">
@@ -204,19 +204,28 @@
 							<span>Dashboard</span> <i class="fa fa-angle-left pull-right"></i>
 					</a>
 						<ul class="treeview-menu">
-							<li><a
-								href="http://localhost:81/bkk_lte/administrator/jobs"><i
+							<li><a href="http://localhost:81/bkk_lte/administrator/jobs"><i
 									class="fa fa-circle-o"></i>jobs</a></li>
-							<li><a
-								href="http://localhost:81/bkk_lte/administrator/company"><i
+							<li><a href="http://localhost:81/bkk_lte/administrator/company"><i
 									class="fa fa-circle-o"></i>company</a></li>
+							<li><a href="http://localhost:81/bkk_lte/administrator/about_us"><i
+									class="fa fa-circle-o"></i>about us</a></li>
+							<li><a
+								href="http://localhost:81/bkk_lte/administrator/service_flow_candidate"><i
+									class="fa fa-circle-o"></i>Service Flow Candidate</a></li>
+							<li><a
+								href="http://localhost:81/bkk_lte/administrator/service_flow_company"><i
+									class="fa fa-circle-o"></i>Service Flow Company</a></li>
+									<li><a
+								href="http://localhost:81/bkk_lte/administrator/gallery"><i
+									class="fa fa-circle-o"></i>Gallery</a></li>
 						</ul></li>
 					<li><a href="#"><i class="fa fa-circle-o text-red"></i> <span>Important</span></a></li>
 				</ul>
 			</section>
 			<!-- /.sidebar -->
 		</aside>
-
+		
 		<!-- =============================================== -->
 
 		<!-- Content Wrapper. Contains page content -->

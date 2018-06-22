@@ -46,4 +46,68 @@ if (isset($page) && $page == 'jobs') {
 
 
 <?php
+} else if (isset($page) && $page == 'about_us') {
+    ?>
+<!-- CK Editor -->
+<script
+	src="<?php echo base_url('template/admin_lte/'); ?>plugins/ckeditor/ckeditor.js"></script>
+<script>
+  $(function () {
+	
+	  CKEDITOR.replace('description_about_us');
+	  });
+  
+  
+  </script>
+
+
+<?php
+} else if (isset($page) && $page == 'service_flow_candidate') {
+    ?>
+<!-- CK Editor -->
+<script
+	src="<?php echo base_url('template/admin_lte/'); ?>plugins/ckeditor/ckeditor.js"></script>
+<script>
+  $(function () {
+	
+	  CKEDITOR.replace('description_service_flow_candidate');
+	  });
+  
+  
+  </script>
+
+
+<?php
+} else if (isset($page) && $page == 'service_flow_company') {
+    ?>
+<!-- CK Editor -->
+<script
+	src="<?php echo base_url('template/admin_lte/'); ?>plugins/ckeditor/ckeditor.js"></script>
+<script>
+  $(function () {
+	
+	  CKEDITOR.replace('description_flow_company');
+	  });
+  
+  
+  </script>
+
+
+<?php
+} else if (isset($page) && $page == 'gallery') {
+    ?>
+<!-- CK Editor -->
+<script
+	src="<?php echo base_url('template/admin_lte/'); ?>plugins/ckeditor/ckeditor.js"></script>
+<script>
+  $(function () {
+	
+	  CKEDITOR.replace('description_gallery');
+	  });
+  
+  
+  </script>
+
+
+<?php
 }
