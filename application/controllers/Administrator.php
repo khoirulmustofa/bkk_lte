@@ -13,6 +13,7 @@ class Administrator extends CI_Controller
         $this->load->model('Service_flow_candidate_model');
         $this->load->model('Service_flow_company_model');
         $this->load->model('Gallery_model');
+        $this->load->model('Management_model');
         $this->load->library('form_validation');
     }
 
@@ -857,6 +858,137 @@ class Administrator extends CI_Controller
         $this->form_validation->set_rules('path_gallery', 'path gallery', 'trim|required');
         
         $this->form_validation->set_rules('id_gallery', 'id_gallery', 'trim');
+        $this->form_validation->set_error_delimiters('<span class="text-danger">', '</span>');
+    }
+    
+    public function management()
+    {
+        $q = urldecode($this->input->get('q', TRUE));
+        $start = intval($this->input->get('start'));
+        
+        if ($q <> '') {
+            $config['base_url'] = base_url() . 'administrator/management/?q=' . urlencode($q);
+            $config['first_url'] = base_url() . 'administrator/management/?q=' . urlencode($q);
+        } else {
+            $config['base_url'] = base_url() . 'administrator/management/';
+            $config['first_url'] = base_url() . 'administrator/management/';
+        }
+        
+        $config['per_page'] = 10;
+        $config['page_query_string'] = TRUE;
+        $config['total_rows'] = $this->Management_model->total_rows_management($q);
+        $management = $this->Management_model->get_limit_data_management($config['per_page'], $start, $q);
+        
+        $this->load->library('pagination');
+        $this->pagination->initialize($config);
+        
+        $data = array(
+            'management_data' => $management,
+            'q' => $q,
+            'pagination' => $this->pagination->create_links(),
+            'total_rows' => $config['total_rows'],
+            'start' => $start,
+            'page' => 'management',
+            'title' => 'List Management'
+        );
+        $this->template->load('administrator/template', 'administrator/view_management_list', $data);
+    }
+    
+    public function management_create()
+    {
+        $data = array(
+            'button' => 'Create',
+            'action' => site_url('administrator/management_create_action'),
+            'id_management' => set_value('id_management'),
+            'name_management' => set_value('name_management'),
+            'description_management' => set_value('description_management'),
+            'photo_management' => set_value('photo_management'),
+            'page' => 'management',
+            'title' => 'Create Management'
+        );
+        $this->template->load('administrator/template', 'administrator/view_management_form', $data);
+    }
+    
+    public function management_create_action()
+    {
+        $this->management_rules();
+        
+        if ($this->form_validation->run() == FALSE) {
+            $this-> management_create();
+        } else {
+            $data = array(
+                'name_management' => $this->input->post('name_management',TRUE),
+                'description_management' => $this->input->post('description_management',TRUE),
+                'photo_management' => $this->input->post('photo_management',TRUE),
+            );
+            
+            $this->Management_model->insert_management($data);
+            $this->session->set_flashdata('message', 'Create Record Success');
+            redirect(site_url('administrator/management'));
+        }
+    }
+    
+    public function management_update($id)
+    {
+        $row = $this->Management_model->get_by_id_management($id);
+        
+        if ($row) {
+            $data = array(
+                'button' => 'Update',
+                'action' => site_url('administrator/management_update_action'),
+                'id_management' => set_value('id_management', $row->id_management),
+                'name_management' => set_value('name_management', $row->name_management),
+                'description_management' => set_value('description_management', $row->description_management),
+                'photo_management' => set_value('photo_management', $row->photo_management),
+                'page' => 'management',
+                'title' => 'Edit Management'
+            );
+            $this->template->load('administrator/template', 'administrator/view_management_form', $data);
+        } else {
+            $this->session->set_flashdata('message', 'Record Not Found');
+            redirect(site_url('administrator/management'));
+        }
+    }
+    
+    public function management_update_action()
+    {
+        $this->management_rules();
+        
+        if ($this->form_validation->run() == FALSE) {
+            $this->management_update($this->input->post('id_management', TRUE));
+        } else {
+            $data = array(
+                'name_management' => $this->input->post('name_management',TRUE),
+                'description_management' => $this->input->post('description_management',TRUE),
+                'photo_management' => $this->input->post('photo_management',TRUE),
+            );
+            
+            $this->Management_model->update_management($this->input->post('id_management', TRUE), $data);
+            $this->session->set_flashdata('message', 'Update Record Success');
+            redirect(site_url('administrator/management'));
+        }
+    }
+    
+    public function management_delete($id)
+    {
+        $row = $this->Management_model->get_by_id_management($id);
+        
+        if ($row) {
+            $this->Management_model->delete_management($id);
+            $this->session->set_flashdata('message', 'Delete Record Success');
+            redirect(site_url('administrator/management'));
+        } else {
+            $this->session->set_flashdata('message', 'Record Not Found');
+            redirect(site_url('administrator/management'));
+        }
+    }
+    
+    public function management_rules()
+    {
+        $this->form_validation->set_rules('name_management', 'name management', 'trim|required');
+        $this->form_validation->set_rules('description_management', 'description management', 'trim|required');
+        $this->form_validation->set_rules('photo_management', 'photo management', 'trim|required');        
+        $this->form_validation->set_rules('id_management', 'id_management', 'trim');
         $this->form_validation->set_error_delimiters('<span class="text-danger">', '</span>');
     }
 }

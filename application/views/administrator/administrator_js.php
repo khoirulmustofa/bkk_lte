@@ -110,4 +110,20 @@ if (isset($page) && $page == 'jobs') {
 
 
 <?php
+} else if (isset($page) && $page == 'management') {
+    ?>
+<!-- CK Editor -->
+<script
+	src="<?php echo base_url('template/admin_lte/'); ?>plugins/ckeditor/ckeditor.js"></script>
+<script>
+  $(function () {
+	
+	  CKEDITOR.replace('description_management');
+	  });
+  
+  
+  </script>
+
+
+<?php
 }

@@ -42,7 +42,7 @@
 			<a href="<?php echo base_url('template/admin_lte/'); ?>index2.html"
 				class="logo"> <!-- mini logo for sidebar mini 50x50 pixels --> <span
 				class="logo-mini"><b>A</b>LT</span> <!-- logo for regular state and mobile devices -->
-				<span class="logo-lg"><b>Admin</b>LTE</span>
+				<span class="logo-lg">BKK Khoirul Mustofa</span>
 			</a>
 			<!-- Header Navbar: style can be found in header.less -->
 			<nav class="navbar navbar-static-top">
@@ -216,16 +216,18 @@
 							<li><a
 								href="http://localhost:81/bkk_lte/administrator/service_flow_company"><i
 									class="fa fa-circle-o"></i>Service Flow Company</a></li>
-									<li><a
-								href="http://localhost:81/bkk_lte/administrator/gallery"><i
+							<li><a href="http://localhost:81/bkk_lte/administrator/gallery"><i
 									class="fa fa-circle-o"></i>Gallery</a></li>
+							<li><a
+								href="http://localhost:81/bkk_lte/administrator/management"><i
+									class="fa fa-circle-o"></i>Management</a></li>
 						</ul></li>
 					<li><a href="#"><i class="fa fa-circle-o text-red"></i> <span>Important</span></a></li>
 				</ul>
 			</section>
 			<!-- /.sidebar -->
 		</aside>
-		
+
 		<!-- =============================================== -->
 
 		<!-- Content Wrapper. Contains page content -->

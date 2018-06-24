@@ -21,10 +21,10 @@ function cek_session_akses($link, $id)
 function template()
 {
     $ci = & get_instance();
-    $query = $ci->db->query("SELECT folder FROM templates where aktif='Y'");
+    $query = $ci->db->query("SELECT folder_templates FROM templates where status_templates ='Y'");
     $tmp = $query->row_array();
     if ($query->num_rows() >= 1) {
-        return $tmp['folder'];
+        return $tmp['folder_templates'];
     } else {
         return 'errors';
     }
